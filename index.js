@@ -58,16 +58,21 @@ function main (opts) {
       console.error(err)
       process.exit(1)
     }
-    console.log(`dat://${dat.key.toString('hex')}`)
+    console.log(`Here is your temporary dat:
+
+  dat://${dat.key.toString('hex')}
+
+It will be thrown away when you close the process.
+Importing...`)
 
     dat.joinNetwork({port: opts.port}, function (err) {
       if (err) {
         console.error(err)
         process.exit(1)
       }
-      console.log('Listening')
+      console.log('Listening!')
     })
-    
+
     dat.importFiles(dir, {
       ignoreHidden: false,
       useDatIgnore: true,

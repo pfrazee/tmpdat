@@ -2,22 +2,23 @@
 
 Creates a temporary in-memory dat.
 
-Tmpdat is useful when you're working on a project and you want to preview it in [Beaker](https://beakerbrowser.com).
-You can create the tmpdat with no concern you'll publish to your project's public dat.
+```
+$ cd ~/my-project
+$ tmpdat .
+Here is your temporary dat:
+
+  dat://cf87693ad9a47eb27d1146908f8e569a08fe127b8dfff9ee0cc0ee8e532d6398
+
+It will be thrown away when you close the process.
+Importing...
+Listening!
+```
+
+Tmpdat is useful when you're working on a project and you want to preview it.
 Tmpdat never writes to the `.dat` folder and it throws away the dat when you close the process.
 
 ```
 npm i -g tmpdat # install
-```
-
-Usage:
-
-```
-$ cd ~/my-project
-$ tmpdat .
-
-dat://74a3fec7ad8191be4660169456a5e2dc6823f5f192f35d34f24ba36079927901
-Listening
 ```
 
 Help:
