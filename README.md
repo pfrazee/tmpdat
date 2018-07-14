@@ -1,6 +1,6 @@
 # tmpdat
 
-Creates a temporary in-memory dat.
+Creates a temporary in-memory dat from any folder.
 
 ```
 ~/my-project$ tmpdat .
