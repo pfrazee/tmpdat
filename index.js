@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
-var subcommand = require('subcommand')
-var debug = require('debug')('tmpdat')
-var pkg = require('./package.json')
-var Dat = require('dat-node')
-var fs = require('fs')
-var path = require('path')
+const subcommand = require('subcommand')
+const debug = require('debug')('tmpdat')
+const pkg = require('./package.json')
+const Dat = require('dat-node')
+const fs = require('fs')
+const path = require('path')
+const openurl = require('openurl')
 
 process.title = 'tmpdat'
 
@@ -20,6 +21,11 @@ var config = {
         boolean: true,
         default: false,
         abbr: 'v'
+      },
+      {
+        name: 'open',
+        boolean: true,
+        default: false
       }
     ],
     command: main
@@ -58,9 +64,11 @@ function main (opts) {
       console.error(err)
       process.exit(1)
     }
+
+    const url = `dat://${dat.key.toString('hex')}`
     console.log(`Here is your temporary dat:
 
-  dat://${dat.key.toString('hex')}
+  ${url}
 
 It will be thrown away when you close the process.
 Importing...`)
@@ -71,6 +79,11 @@ Importing...`)
         process.exit(1)
       }
       console.log('Listening!')
+
+      if (opts.open) {
+        console.log('Opening in your browser')
+        openurl.open(url)
+      }
     })
 
     dat.importFiles(dir, {
@@ -96,6 +109,7 @@ No files are modified on the disk, making this safe to run on folders which alre
 Options:
   --version -v   Get the current version
   --port         Port to use for connections (default port: 3282 or first available)
+  --open         Open the new URL in your browser (eg https://beakerbrowser.com)
 
   `
   console.error(msg)

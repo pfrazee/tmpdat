@@ -13,6 +13,12 @@ Importing...
 Listening!
 ```
 
+Include the 'open' switch to have it automatically open in your browser when ready.
+
+```
+~/my-project$ tmpdat --open
+```
+
 Tmpdat is useful when you're working on a project and you want to preview it.
 Tmpdat never writes to the `.dat` folder and it throws away the dat metadata when you close the process.
 
@@ -31,4 +37,5 @@ No files are modified on the disk, making this safe to run on folders which alre
 Options:
   --version -v   Get the current version
   --port         Port to use for connections (default port: 3282 or first available)
+  --open         Open the new URL in your browser (eg https://beakerbrowser.com)
 ```
